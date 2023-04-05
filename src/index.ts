@@ -17,4 +17,4 @@
   @license
 */
 
-export { EventSink } from './EventSink';
+export { EventSink } from './EventSink.js';

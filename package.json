@@ -1,6 +1,6 @@
 {
   "name": "weeg-events",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "WebExtensions Experts Groups events library",
   "main": "dist/index.js",
   "scripts": {
