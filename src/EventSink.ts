@@ -17,7 +17,7 @@
   @license
 */
 
-export type EventListener<T> = (details: T) => void;
+export type EventListener<T> = (details: T) => void | Promise<void>;
 export type ErrorHandler = (error: unknown) => void;
 
 export class EventSink<T> {
@@ -71,7 +71,10 @@ export class EventSink<T> {
   public dispatch(details: T): void {
     for (const listener of this._listeners) {
       try {
-        listener(details);
+        const promise = Promise.resolve(listener(details));
+        promise.catch((e) => {
+          this.handleError(e);
+        });
       } catch (e) {
         this.handleError(e);
       }
